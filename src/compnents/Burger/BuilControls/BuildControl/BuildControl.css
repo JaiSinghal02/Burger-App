@@ -1,0 +1,51 @@
+.BuildControl{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    margin:5px 0;
+    padding:10px;
+    width:auto;
+    font-size: 1rem;
+}
+
+.Label{
+    color: rgb(18, 75, 4);
+    display: inline-block;
+    padding:10px;
+    width:80px;
+    font-size: 1.2rem;
+    font-weight: bolder;
+}
+.BuildControl button{
+    padding:5px;
+    margin: 0 5px;
+    outline: none;
+    color: rgb(32, 19, 19);
+    font-weight: Bold;
+    
+
+}
+.BuildControl button:hover:enabled{
+    cursor:pointer;
+    font-size: 0.8rem;
+    box-shadow: 1px 1px rgb(53, 59, 44);
+}
+.BuildControl button:disabled{
+    cursor:context-menu;
+}
+.Increase{
+    background-color: rgb(70, 146, 25)
+}
+.Increase:active{
+    background-color: rgb(88, 172, 40)
+}
+.Decrease{
+    background-color: rgb(123, 167, 73)
+}
+.Decrease:active{
+    background-color: rgb(136, 190, 66)
+}
+.Increase:disabled,.Decrease:disabled{
+    background-color: rgb(99, 96, 95);
+    color:rgb(172, 151, 143);
+}

@@ -1,0 +1,62 @@
+.BuildControls{
+    display:flex;
+    flex-flow: column;
+    align-items: center;
+    position:relative;
+    padding: 10px 0;
+    width: 70%;
+    height: 20%;
+    margin: auto 160px;
+    background-color: rgb(54, 190, 111);
+    box-shadow: 0 2px 2px rgb(21, 95, 76);
+}
+.Price-Section{
+    flex-direction: column;
+    position:absolute;
+    height:30%;
+    right: 50px;
+    bottom: 35px;
+    margin:auto 20px;
+    flex-flow: row;
+    padding:0 20px;
+    justify-content: center;
+    background-color: rgb(122, 77, 18);
+}
+.Price{
+    font-size: 1.2rem;
+    color:rgb(231, 202, 35);
+}
+.Check-Out{
+    align-items: baseline;
+    margin:15px auto;
+    height: 30%;
+    font-size: 1.1rem;
+    background-color: rgb(179, 119, 30);
+}
+.Check-Out:hover:enabled{
+    cursor:pointer;
+    background-color: rgb(199, 137, 44);
+    font-size: 1.14rem;
+    box-shadow: 1.3px 1.5px rgb(97, 65, 16);
+    outline: none;
+}
+.Check-Out:enabled{
+    animation-name: enabled;
+    animation-duration: 0.8s;
+    animation-timing-function: ease-in-out;
+}
+@keyframes enabled{
+    0%{
+        transform: scale(1);
+        transform:skew(20);
+    }
+    30%{
+        transform: scale(0.8);
+    }
+    70%{
+        transform: scale(1.1);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
