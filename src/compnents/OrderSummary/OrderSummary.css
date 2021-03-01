@@ -1,0 +1,57 @@
+.Summary-Heading{
+    font-size: 1.5rem;
+}
+
+.Summary-Title{
+    display:block;
+    text-align: justify;
+    padding-left: 3%;
+    font-size: calc(1.1rem+0.9vw);
+
+}
+.Summary-List{
+    display:block;
+    color:rgb(2, 2, 2);
+    justify-content: left;
+    text-align: left;
+
+}
+.Summary-Price{
+    display: block;
+    text-align: justify;
+    padding-left: 3%;
+    font-size: 1.1rem;
+}
+.Summary-Btns{
+    display: flex;
+    margin: 10px 0px;
+    padding: 10px 0px;
+    
+}
+.Summary-Cancel{
+    margin:auto 30px;
+    padding: 7px;
+    background: none;
+    border-width: 0;
+    background-image: linear-gradient(to right,rgb(243, 109, 47),crimson);
+    border-radius: 2px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.Summary-Proceed{
+    background: none;
+    border-width: 0;
+    background-image: linear-gradient(to right,rgb(104, 243, 62),rgb(40, 161, 100));
+    border-radius: 2px;
+    cursor: pointer;
+    font-weight: bold;
+    transform: rotateX();
+    
+}
+.Summary-Cancel:active{
+    transform: translateY(2px);
+    box-shadow: 1px 1px grey;
+}
+.Summary-Proceed:active{
+    transform: translateY(2px);
+};

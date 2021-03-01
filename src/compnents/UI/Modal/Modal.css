@@ -1,0 +1,14 @@
+.Modal{
+    display:block;
+    position:fixed;
+    background-color: blanchedalmond;
+    width:40%;
+    border: 1.5px solid brown;
+    left: 30%;
+    top:30%;
+    z-index: 300;
+    box-shadow: 2px 3px 4px rgb(75, 72, 72);
+    transition: all 0.3s ease-out;
+    
+
+}
