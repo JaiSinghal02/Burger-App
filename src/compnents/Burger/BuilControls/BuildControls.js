@@ -28,7 +28,7 @@ const BuildControls = (props) => (
             <div className="Price">
                 Total price: Rs{props.price}
             </div>
-            <button className="Check-Out" disabled={!props.checkOrd}>Check out</button>
+            <button className="Check-Out" disabled={!props.checkOrd} onClick={props.ordered}>Check out</button>
         </div>
     </div>
 
