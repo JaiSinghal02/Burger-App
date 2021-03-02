@@ -2,35 +2,41 @@
     display:flex;
     flex-flow: column;
     align-items: center;
-    position:relative;
     padding: 10px 0;
     width: 70%;
-    height: 20%;
-    margin: auto 160px;
+    height: 310px;
+    margin: auto 15%;
+    box-sizing: border-box;
     background-color: rgb(54, 190, 111);
     box-shadow: 0 2px 2px rgb(21, 95, 76);
 }
+.Build-Box{
+    display: flex;
+    flex-direction: row;
+}
+.Control-Box{
+    display: flex;
+    flex-direction: column;
+}
 .Price-Section{
     flex-direction: column;
-    position:absolute;
     height:30%;
-    right: 50px;
-    bottom: 35px;
-    margin:auto 20px;
-    flex-flow: row;
+    box-sizing: border-box;
+    margin-top:180px;
+    margin-left: 40px;
     padding:0 20px;
     justify-content: center;
-    background-color: rgb(122, 77, 18);
+    background-color: rgb(46, 177, 159);
 }
 .Price{
-    font-size: 1.2rem;
+    font-size: calc(7px + 1.2vw);
     color:rgb(231, 202, 35);
 }
 .Check-Out{
     align-items: baseline;
     margin:15px auto;
-    height: 30%;
-    font-size: 1.1rem;
+    height: 35%;
+    font-size: calc(5px + 1vw);
     background-color: rgb(179, 119, 30);
 }
 .Check-Out:hover:enabled{

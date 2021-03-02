@@ -11,24 +11,29 @@ const scheme = [
 const BuildControls = (props) => (
 
     <div className="BuildControls">
+        <div className="Build-Box">
+            <div className="Control-Box">
+            {
+                scheme.map((val, i) => {
+                    return <BuildControl label={val.label}
+                        value={val.value}
+                        decClick={() => props.dClick(i)}
+                        incClick={() => props.iClick(i)}
+                        limit={val.limit}
+                        ingd={props.ing}
+                    />
+                })
+            }
 
-        {
-            scheme.map((val, i) => {
-                return <BuildControl label={val.label}
-                    value={val.value}
-                    decClick={() => props.dClick(i)}
-                    incClick={() => props.iClick(i)}
-                    limit={val.limit}
-                    ingd={props.ing}
-                />
-            })
-        }
-
-        <div className="Price-Section">
-            <div className="Price">
-                Total price: Rs{props.price}
             </div>
-            <button className="Check-Out" disabled={!props.checkOrd} onClick={props.ordered}>Check out</button>
+
+            <div className="Price-Section">
+                <div className="Price">
+                    Total price: Rs{props.price}
+                </div>
+                <button className="Check-Out" disabled={!props.checkOrd} onClick={props.ordered}>Check out</button>
+            </div>
+
         </div>
     </div>
 

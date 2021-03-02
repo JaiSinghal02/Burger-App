@@ -4,7 +4,7 @@ import './BackDrop.css';
 const backDrop = (props)=>{
     return (
         props.showBack?
-        <div className="BackDrop"></div>:
+        <div className="BackDrop" onClick={props.clicked}></div>:
         null
     )
 };

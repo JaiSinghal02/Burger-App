@@ -1,0 +1,25 @@
+.Nav-items{
+    display:flex;
+    flex-direction: column;
+    width:100%;
+    height:100%;
+}
+
+@media only screen and (min-width: 600px){
+    .Nav-items{
+        flex-flow: row-reverse;
+        right:10px;
+        box-sizing: border-box;
+        width:100%;
+        padding:0 4px;
+        margin:0;
+        height:40px;
+
+    }
+    .Nav-Home{
+        order:1;
+    }
+    .Nav-About{
+        order:0;
+    }
+}

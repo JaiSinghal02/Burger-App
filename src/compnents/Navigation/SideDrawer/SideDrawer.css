@@ -1,0 +1,36 @@
+.Drawer-Cont{
+    display: flex;
+    flex-direction: column;
+    height:100vh;
+    right:0;
+    top:0;
+    transition: transform 0.4s ease-out;
+    background-color: white;
+    width: 200px;
+    position:fixed;
+    z-index: 200;
+}
+.Drawer-Menu{
+    width:100%;
+    color:black;
+    background-color: rgb(14, 146, 106) ;
+    height:30px;
+}
+.Drawer-Nav{
+    display:flex;
+    flex-direction: column;
+    height:100%;
+    width:100%;
+}
+.Open{
+    transform: translateX(0);
+}
+.Close{
+    transform: translateX(200%);
+}
+
+@media only screen and (min-width:600px){
+    .Side-Drawer{
+        display:none;
+    }
+}

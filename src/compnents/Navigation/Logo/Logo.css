@@ -1,0 +1,12 @@
+.Burger-Logo{
+    top:2px;
+    height:90%;
+    width:5%;
+    justify-content: center;
+}
+
+.Burger-Logo img{
+    top:2px;
+    height:100%;
+    width:75%;
+}
