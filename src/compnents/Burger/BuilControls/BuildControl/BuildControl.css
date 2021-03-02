@@ -49,3 +49,21 @@
     background-color: rgb(99, 96, 95);
     color:rgb(172, 151, 143);
 }
+
+@media only screen and (max-width:700px){
+    .BuildControl{
+        display:flex;
+        justify-content: normal;
+        align-items: center;
+        margin:1px 0;
+        padding:5px 28px;
+    }
+    .Label{
+        color: rgb(18, 75, 4);
+        display: inline-block;
+        padding:10px;
+        width:80px;
+        font-size: 0.8rem;
+        font-weight: bolder;
+    }
+}

@@ -19,11 +19,14 @@
 }
 .Menu{
     display:inline-block;
+    justify-content: center;
     margin:0;
-    width:7%;
+    width:10%;
     height: 100%;
     padding:0.5%;
+    padding-top:5px;
     box-sizing: border-box;
+    font-size: 1.2rem;
 }
 .Menu:hover{
     background-color:rgb(16, 175, 127) ;
@@ -46,6 +49,9 @@
 @media only screen and (max-width:600px){
     .Menu,.Toolbar-Nav-Items{
         display:none;
+    }
+    .Nav-Button{
+        width:6%;
     }
 }
 @media only screen and (min-width:601px){

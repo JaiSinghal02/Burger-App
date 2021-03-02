@@ -12,3 +12,12 @@
     
 
 }
+
+@media only screen and (max-width:500px){
+    .Modal{
+        width:68%;
+        left:17%;
+        top:20%;
+        font-size: 0.94rem;
+    }
+}
