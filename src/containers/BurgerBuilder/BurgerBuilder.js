@@ -5,6 +5,8 @@ import BuildControls from '../../compnents/Burger/BuilControls/BuildControls'
 import './BurgerBuilder.css'
 import Modal from '../../compnents/UI/Modal/Modal';
 import OrderSummary from '../../compnents/OrderSummary/OrderSummary';
+import Spinner from '../../compnents/UI/Spinner/Spinner';
+import axios from 'axios';
 class BurgerBuilder extends Component {
     constructor(props) {
         super(props);
@@ -14,7 +16,8 @@ class BurgerBuilder extends Component {
             baseprice: 10,
             price: 10,
             shouldOrder: false,
-            isPurchasing:false
+            isPurchasing:false,
+            spinner:false
         }
     };
     updateShouldOrder(ing) {
@@ -58,15 +61,47 @@ class BurgerBuilder extends Component {
     checkOut() {
         alert("Are you sure")
     }
+
+    orderBurger() {
+        this.setState({spinner:true})
+        const order = {
+            Patty: this.state.ingredient[0],
+            Cheese: this.state.ingredient[1],
+            Salad: this.state.ingredient[2],
+            Pickle: this.state.ingredient[3],
+            Amount: this.state.price
+        }
+        axios.post('/orders.json',order)
+            .then(res=>{
+                this.setState({isPurchasing:false,spinner:false});
+                console.log(res);
+            })
+            .catch(err=>{
+                this.setState({isPurchasing:false,spinner:false});
+                console.log(err);
+            })
+    }
+    resetBurger(){
+        let olding=[...this.state.ingredient];
+        let reseting=olding.map(e=>{
+            return 0;
+        })
+        this.setState({ingredient:reseting,shouldOrder:false})
+    }
     render() {
+        let modalContent=<Spinner/>
+        if(!this.state.spinner){
+            modalContent=<OrderSummary 
+            ing={this.state.ingredient} 
+            ordCancel={this.notPurchasing.bind(this)}
+            price={this.state.price}
+            orderBurger={this.orderBurger.bind(this)}
+            />
+        }
         return (
             <Aux className="Container">
                 <Modal showModal={this.state.isPurchasing}>
-                    <OrderSummary 
-                    ing={this.state.ingredient} 
-                    ordCancel={this.notPurchasing.bind(this)}
-                    price={this.state.price}
-                    />
+                    {modalContent}
                 </Modal>
                 <Burger val={[...this.state.ingredient]}></Burger>
 
@@ -77,6 +112,7 @@ class BurgerBuilder extends Component {
                     price={this.state.price}
                     checkOrd={this.state.shouldOrder}
                     ordered={this.purchasing.bind(this)}
+                    reset={this.resetBurger.bind(this)}
                 />
 
             </Aux>

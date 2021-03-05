@@ -21,6 +21,7 @@ const BuildControls = (props) => (
                         incClick={() => props.iClick(i)}
                         limit={val.limit}
                         ingd={props.ing}
+                        key={val.label+val.value}
                     />
                 })
             }
@@ -33,6 +34,7 @@ const BuildControls = (props) => (
                 </div>
                 <button className="Check-Out" disabled={!props.checkOrd} onClick={props.ordered}>Check out</button>
             </div>
+            <div className="Reset-Button-Div"><button className="Reset-Button" disabled={!props.checkOrd} onClick={props.reset}>Reset</button></div>
 
         </div>
     </div>
