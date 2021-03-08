@@ -5,11 +5,13 @@ import NavigationItems from '../NavigationItems/NavigationItems';
 import MenuBtn from '../../../assets/images/Menu-Button.png';
 
 //import Aux from '../../../hoc/Auxillary';
+
+//<p className="Menu">Menu</p>
 const toolbar =(props)=>{
     return (
     <header className="Toolbar-Head">
         <Logo/>
-        <p className="Menu">Menu</p>
+        
         <nav className="Toolbar-Nav-Items">
         <NavigationItems show={props.show}/>
         </nav>

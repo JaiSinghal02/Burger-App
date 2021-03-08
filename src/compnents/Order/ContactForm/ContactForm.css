@@ -1,0 +1,48 @@
+.Contact-Form-Div{
+    width:70%;
+    height:520px;
+    margin:0;
+
+}
+.Contact-Form{
+    width:60%;
+    margin:auto;
+    background-color: #809b53;
+    box-shadow: 2px 2px 5px rgb(39 63 29);
+    border: 2px outset rgb(67, 88, 82);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    animation: slide 1.5s ease-in-out;
+    position: relative;
+    z-index: 5;
+}
+.Contact-Form label{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size:calc(10px + 1.1vw);
+    display:inline-block;
+}
+.Input{
+    display:inline-block;
+    padding:5px 10px;
+    max-width:44%;
+    margin-bottom: 15px;
+    margin-left: 25%;
+}
+.Contact-Form-Button{
+    width:70px;
+    font-size:80%;
+}
+
+
+@keyframes slide {
+    0%{
+        transform: translateY(-61vh);
+    }
+    93%{
+        transform: translateY(7px);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}

@@ -6,13 +6,12 @@ import './BurgerBuilder.css'
 import Modal from '../../compnents/UI/Modal/Modal';
 import OrderSummary from '../../compnents/OrderSummary/OrderSummary';
 import Spinner from '../../compnents/UI/Spinner/Spinner';
-import axios from 'axios';
 class BurgerBuilder extends Component {
     constructor(props) {
         super(props);
         this.state = {
             ingredient: [0, 0, 0, 0], //patty,cheese,salad,pickle
-            rate: [2, 3, 4, 5],
+            rate: [15, 10, 8, 2],
             baseprice: 10,
             price: 10,
             shouldOrder: false,
@@ -63,23 +62,18 @@ class BurgerBuilder extends Component {
     }
 
     orderBurger() {
-        this.setState({spinner:true})
-        const order = {
-            Patty: this.state.ingredient[0],
-            Cheese: this.state.ingredient[1],
-            Salad: this.state.ingredient[2],
-            Pickle: this.state.ingredient[3],
-            Amount: this.state.price
-        }
-        axios.post('/orders.json',order)
-            .then(res=>{
-                this.setState({isPurchasing:false,spinner:false});
-                console.log(res);
-            })
-            .catch(err=>{
-                this.setState({isPurchasing:false,spinner:false});
-                console.log(err);
-            })
+        
+        const q=this.state.ingredient.map((e,i)=>{
+            return (encodeURIComponent(String.fromCharCode(65+i))+"="+ encodeURIComponent(e));
+        })
+        q.push("price="+String(`${this.state.price}`))
+        const qstr=q.join("&");
+        console.log(q,qstr);
+        this.props.history.push({
+            pathname:'/check-out',
+            search: '?'+qstr
+        
+        });
     }
     resetBurger(){
         let olding=[...this.state.ingredient];

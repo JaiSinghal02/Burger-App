@@ -1,0 +1,13 @@
+.Order-History{
+    width:100%;
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+@media only screen and (max-width:575px){
+    .Order-History{
+        display: flex;
+        flex-direction: column;
+    }
+}
