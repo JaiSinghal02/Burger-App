@@ -1,8 +1,8 @@
 .Content{
     background-color: rgb(176, 245, 176);
+    min-height: 110vh;
     height:auto;
     margin:auto;
-    justify-content: center;
     align-items: center;
     display:flex ;
     flex-direction: column;

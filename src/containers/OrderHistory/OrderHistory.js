@@ -44,7 +44,7 @@ class OrderHistory extends Component{
                 Heading=null;
             }
             else if(Orders.length%3!==0){
-                let wid=(Orders.length%3)===1?'56%':'26%';
+                let wid=(Orders.length%3)===1?'59%':'26%';
                 console.log(typeof wid)
                 ExtraCard=<p style={{fontSize:"1rem",width:String(wid),display:'flex',justifyContent:'center',alignItems:'center'}}>Make more orders...</p>
             }

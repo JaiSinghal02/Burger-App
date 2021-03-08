@@ -55,21 +55,15 @@
 }
 
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 600px) {
     .Check-Out-Burger{
         width:350px;
         margin:auto;
     }
 }
-@media only screen and (max-width:500px){
+@media only screen and (max-width:350px){
     .Check-Out-Burger{
-        width:300px;
-        margin:0 0;
-    }
-}
-@media only screen and (max-width:300px){
-    .Check-Out-Burger{
-        width:250px;
+        width:240px;
         margin:0 0;
     }
 }

@@ -13,7 +13,7 @@
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    animation: slide 1.5s ease-in-out;
+    animation: slide 1s ease-in-out;
     position: relative;
     z-index: 5;
 }
@@ -32,6 +32,29 @@
 .Contact-Form-Button{
     width:70px;
     font-size:80%;
+}
+.Incorrect-Info{
+    border:5px groove rgb(230, 69, 69)
+}
+.Correct-Info{
+    border:5px groove rgb(69, 230, 131)
+}
+@media only screen and (max-width:850px){
+    .Contact-Form-Div{
+        width:100%;
+    }
+    .Contact-Form{
+        width:70%;
+    }
+}
+
+@media only screen and (max-width:500px){
+    .Contact-Form-Div{
+        width:100%;
+    }
+    .Contact-Form{
+        width:90%;
+    }
 }
 
 

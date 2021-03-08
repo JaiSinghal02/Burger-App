@@ -1,5 +1,6 @@
 import CheckOutOrder from '../../compnents/Order/CheckOutOrder/CheckOutOrder';
 import React, { Component } from 'react';
+import './CheckOut.css'
 import UserContact from '../UserContact/UserContact';
 
 class CheckOut extends Component {
