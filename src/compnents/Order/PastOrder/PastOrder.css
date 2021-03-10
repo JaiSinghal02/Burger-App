@@ -1,12 +1,18 @@
+.Past-Order-Page{
+    width:30%;
+}
+
+
 .Past-Order{
     margin-top: 10px;
-    width:27%;
+    width:100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     background-color: rgb(140 195 111);
     color: #083750;
     box-shadow: 3px 4px 7px #4c6239;
     margin-bottom: 8px;
+    height:90%;
 }
 .Past-Order-Pin{
     position: relative;
@@ -18,27 +24,30 @@
     box-shadow: inset 2px 0 6px #4c6239;
     background-color:rgb(176, 245, 176);
 }
+.Past-Order-Details{
+    width:50%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 13px;
+}
 .Past-Order-Ing{
     display: inline-block;
-    text-align: start;
-    margin-left: 15px;
+    text-align: left;
     margin-bottom: 0;
 }
-.Past-Order > ul{
+.Past-Order-Details ul{
     list-style: none;
+    padding-inline-start: 5px;;
     display: flex;
-
-flex-direction: column;
-justify-content: flex-start;
-align-items: flex-start;
-padding-left: 25px;
-margin-top:5px;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 5px;
 
 }
 .Past-Order-Price{
     text-align: start;
-    padding-left: 15px;
     margin-top: 0;
+    margin-bottom: 5px;
 }
 
 .Past-Order:hover{
@@ -49,8 +58,83 @@ margin-top:5px;
     box-shadow: inset 1px 0 2px #4c6239;;
 }
 
+.Past-Order-Customer{
+    display:flex;
+    width:20%;
+    align-self: flex-end;
+    left: 12%;
+    position: relative;
+    justify-content: center;
+}
+.Past-Order-Customer-Details{
+    font-size: 0.5rem;
+    font-weight: bold;
+    color: #0c5c52;
+}
+.Past-Order-Customer:hover{
+    background-color: #6d8b53;
+    cursor: pointer;
+}
+.Random{
+    display: none;
+}
+.Bullet-Points{
+    text-transform: capitalize;
+}
+.Hide{
+    display: none;
+}
+.Show{
+    display: flex;
+}
+
+
+.Flip-Card-Show{
+    animation: flipShow 0.8s ease-in;
+    z-index: 1;
+}
+
+@keyframes flipShow{
+    from{
+        transform: rotateY(270deg);
+        z-index: 0;
+        opacity: 0;
+        box-shadow: none;
+        
+    }
+    to{
+        transform: rotateY(0deg);
+        z-index: 1;
+        opacity:1;
+        box-shadow: none;
+    }
+}
+
+@media only screen and (max-width:700px){
+    .Past-Order-Page{
+        margin-top: 10px;
+        margin-left: 4%;
+        width:40%;
+        display: flex;
+        flex-direction: column;
+        background-color: rgb(140 195 111);
+        color: #083750;
+        box-shadow: 3px 4px 7px #4c6239;
+        margin-bottom: 8px;
+    }
+    .Flip-Card-Show{
+        animation: flipShow 1s ease-in;
+        z-index: 1;
+    }
+    .Hide{
+        display: none;
+    }
+    .Show{
+        display: flex;
+    }
+}
 @media only screen and (max-width:570px){
-    .Past-Order{
+    .Past-Order-Page{
         margin-top: 10px;
         margin-left: 10%;
         width:80%;
@@ -60,5 +144,15 @@ margin-top:5px;
         color: #083750;
         box-shadow: 3px 4px 7px #4c6239;
         margin-bottom: 8px;
+    }
+    .Flip-Card-Show{
+        animation: flipShow 1s ease-in;
+        z-index: 1;
+    }
+    .Hide{
+        display: none;
+    }
+    .Show{
+        display: flex;
     }
 }

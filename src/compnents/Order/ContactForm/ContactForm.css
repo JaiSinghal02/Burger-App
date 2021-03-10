@@ -34,10 +34,10 @@
     font-size:80%;
 }
 .Incorrect-Info{
-    border:5px groove rgb(230, 69, 69)
+    border:3px groove rgb(231, 52, 52)
 }
 .Correct-Info{
-    border:5px groove rgb(69, 230, 131)
+    border:3px groove rgb(87, 228, 141)
 }
 @media only screen and (max-width:850px){
     .Contact-Form-Div{

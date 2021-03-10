@@ -22,10 +22,6 @@ const burger = (props)=>{
             {patty.map((p)=>{return p})}
             {dispmsg}
             <BurgerIngredients ing="bread-bottom"></BurgerIngredients>
-            
-            
-            
-
         </div>
     )
 };

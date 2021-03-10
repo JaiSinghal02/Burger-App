@@ -18,7 +18,7 @@ class UserContact extends Component {
             },
             spinner: false,
             validateClass:['','','','',''],
-            canSubmit:false,
+            mouseEntered: false,
             exit:false
 
         }
@@ -41,7 +41,7 @@ class UserContact extends Component {
                 newClass.push('Incorrect-Info')
             }
         }
-        this.setState({validateClass:newClass,canSubmit:check})
+        this.setState({validateClass:newClass,mouseEntered:true})
         return check;
 
     }
@@ -56,7 +56,17 @@ class UserContact extends Component {
             Cheese: this.props.ing[1],
             Salad: this.props.ing[2],
             Pickle: this.props.ing[3],
-            Amount: this.props.price
+            Amount: this.props.price,
+            Customer: {
+                name: this.state.name,
+                email: this.state.email,
+                age: this.state.age,
+                phone_number: this.state.phone_number,
+                address: {
+                    street: this.state.address.street,
+                    pincode: this.state.address.pincode
+                }
+            }
         }
         axios.post('/orders.json', order)
             .then(res => {
@@ -86,17 +96,17 @@ class UserContact extends Component {
             newAdd[x]=event.target.value;
             this.setState({address:newAdd})
         }
+        if(this.state.mouseEntered) this.validateInfo();
     }
     render() {
         let form = <ContactForm 
         submitContact={this.order.bind(this)} 
         changed={this.updInfo.bind(this)} 
-        validateClass={this.state.validateClass} 
-        btnCheck={this.state.canSubmit}
+        validateClass={this.state.validateClass}
         validateInfo={this.validateInfo.bind(this)}
         />;
         if (this.state.spinner) {
-            form = <Spinner />
+            form = <Modal showModal="true"><Spinner/></Modal>
         }
         else if (this.state.exit){
             form=<Modal showModal="true">

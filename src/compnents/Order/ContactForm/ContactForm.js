@@ -20,7 +20,7 @@ const contactForm = (props)=>{
                 <label >Your Age</label>
                 <input className={"Input "+props.validateClass[1]} type="number" name="age" placeholder="Age" onChange={(event)=>props.changed(event,"age")}></input>
                 <label >Your Email</label>
-                <input className="Input" type="email" name="email" placeholder="Email" onChange={(event)=>props.changed(event,"email")}></input>
+                <input className="Input" type="email" name="email" placeholder="Email"  required onChange={(event)=>props.changed(event,"email")}></input>
                 <label >Your Phone Number</label>
                 <input className={"Input "+props.validateClass[2]} type="number" name="phone-number" placeholder="Phone Number" onChange={(event)=>props.changed(event,"phone_number")}></input>
                 <label >Your Street Address</label>
@@ -30,8 +30,7 @@ const contactForm = (props)=>{
                 <button 
                     id="Contact-Submit-Btn"
                     className="Input Contact-Form-Button" 
-                    type="submit" 
-                    disabled={props.btnCheck}
+                    type="submit"
                     onMouseEnter={props.validateInfo}>
                 
                     Submit
