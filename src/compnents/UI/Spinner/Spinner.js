@@ -1,10 +1,14 @@
 import React from 'react';
 import './Spinner.css';
 
-const spinner = ()=>
+const spinner = () =>
 (
-
-<div className="loader"><p style={{'fontSize':"0.8rem"}}>Loading</p></div>
-)  
+    <div className="Spinner-Div">
+    <p>Loading</p>
+    <div className="loader">
+        <p style={{ 'fontSize': "0.8rem" }}></p>
+    </div>
+    </div>
+)
 
 export default spinner;

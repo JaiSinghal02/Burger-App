@@ -1,0 +1,68 @@
+.Auth-Form-Box{
+    display: flex;
+    flex-direction: column;
+    width:100%;
+    height:300px;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    margin-top:20px;
+}
+.Auth-Form-Div{
+    width:40%;
+    height:250px;
+    background-color: rgb(205, 255, 220);
+    box-shadow: 1px 2px 3px rgb(111, 133, 78);
+    padding-top: 10px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+.Auth-Form-Div h4{
+    margin:0;
+    margin-bottom: 15px;
+}
+.Auth-Form{
+    display: flex;
+    flex-direction: column;
+    width:80%;
+    height:200px;
+    justify-content: space-around;
+    align-items: center;
+}
+.Auth-Form input{
+    width:60%;
+}
+.Auth-Form-Switch-Btn{
+    margin-top: 35px;
+    
+}
+
+.Auth-Modal{
+    align-items: center;
+    justify-content: center;
+}
+.Auth-Error{
+    animation: flash 2.5s ease-out;
+}
+@keyframes flash{
+    0%{
+        background-color: none
+    }
+    30%{
+        background-color: rgba(216, 68, 63, 0.897);
+    }
+    100%{
+        background-color: none;
+    }
+}
+
+@media only screen and (max-width:620px){
+    .Auth-Form-Div{
+        width:72%;
+    }
+    .Auth-Form input{
+        width:75%;
+    }
+}
