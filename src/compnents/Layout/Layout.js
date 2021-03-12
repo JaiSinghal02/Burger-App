@@ -13,10 +13,8 @@ class Layout extends Component{
     }
     toggleDrawer(){
         let check=this.state.showDrawer;
-        console.log("Old value is ",check)
         let newcheck=!check;
         this.setState({showDrawer:newcheck});
-        console.log(newcheck);
     }
 render(){
     return(

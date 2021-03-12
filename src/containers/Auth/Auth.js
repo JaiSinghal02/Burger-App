@@ -2,6 +2,8 @@ import React , { Component } from 'react';
 import Spinner from '../../compnents/UI/Spinner/Spinner'
 import BackDrop from '../../compnents/UI/Backdrop/BackDrop'
 import axios from 'axios'
+import {connect} from 'react-redux';
+import * as actionTypes from '../../store/actions/action'
 import './Auth.css'
 class Auth extends Component{
     constructor(props){
@@ -12,8 +14,14 @@ class Auth extends Component{
             isSignUp:true,
             showSpinner:false,
             showError:false,
-            errorMessage:''
+            errorMessage:'',
+            successMessage:''
         }
+    }
+    redirect(){
+        setTimeout(()=>{
+            this.props.history.push('/')
+        },1600)
     }
     submitForm(e){
         e.preventDefault();
@@ -30,7 +38,9 @@ class Auth extends Component{
             axios.post(signUpUrl,user)
                 .then(res=>{
                     console.log(res);
-                    this.setState({showSpinner:false})
+                    this.setState({showSpinner:false,successMessage:"Sign Up Successful"})
+                    this.props.onAuth(res.data.idToken)
+                    this.redirect();
                 })
                 .catch(err=>{
                     this.setState({showError:true,errorMessage:err.response.data.error.message.split("_").join(" "),showSpinner:false});
@@ -42,10 +52,12 @@ class Auth extends Component{
             axios.post(singInUrl,user)
                 .then(res=>{
                     console.log(res)
-                    this.setState({showSpinner:false})
+                    this.setState({showSpinner:false,successMessage:"Sign in Successful"})
+                    this.props.onAuth(res.data.idToken)
+                    this.redirect();
                 })
                 .catch((err)=>{
-                    this.setState({showError:true,errorMessage:err.response.data.error.message.split("_"),showSpinner:false});
+                    this.setState({showError:true,errorMessage:err.response.data.error.message.split("_").join(" "),showSpinner:false});
                     console.log("err code=",err.response.data)
                 })
         }
@@ -67,7 +79,13 @@ class Auth extends Component{
         <BackDrop showBack={this.state.showSpinner}></BackDrop>
         <Spinner />
         </>
-        if(!this.state.showSpinner){
+        if(this.state.successMessage !==''){
+            content=<>
+            <BackDrop showBack="true"></BackDrop>
+            <p className="Auth-Success-Msg">{this.state.successMessage}</p>
+            </>
+        }
+        if((!this.state.showSpinner) && this.state.successMessage===''){
             content=<div className="Auth-Form-Box">
             <div className="Auth-Form-Div">
                 <h4>{this.state.isSignUp?"Sign Up Form":"Sign In Form"}</h4>
@@ -88,4 +106,10 @@ class Auth extends Component{
         )
     }
 }
-export default Auth;
+
+const mapDispatchToProps=dispatch=>{
+    return {
+        onAuth: (authId)=> dispatch({type: actionTypes.SET_AUTH_ID, authId: authId})
+    }
+}
+export default connect(null,mapDispatchToProps)(Auth);

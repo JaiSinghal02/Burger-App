@@ -44,9 +44,9 @@
     justify-content: center;
 }
 .Auth-Error{
-    animation: flash 2.5s ease-out;
+    animation: flashError 2.5s ease-out;
 }
-@keyframes flash{
+@keyframes flashError{
     0%{
         background-color: none
     }
@@ -55,6 +55,21 @@
     }
     100%{
         background-color: none;
+    }
+}
+
+.Auth-Success-Msg{
+    z-index:150;
+    margin-top: 100px;
+    font-size: 1.2rem;
+    animation: flashSuccess 0.8s ease-in-out;
+}
+@keyframes flashSuccess{
+    from{
+        transform: translateY(-100vh);
+    }
+    to{
+        transform: translateY(0);
     }
 }
 

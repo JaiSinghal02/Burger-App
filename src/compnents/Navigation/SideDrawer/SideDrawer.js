@@ -14,7 +14,7 @@ const sideDrawer = (props)=>{
         <div className={classes}>
             <div className="Drawer-Menu">Menu</div>
             <div className="Drawer-Nav">
-                <NavigationItems/>
+                <NavigationItems toggle={props.toggle}/>
             </div>
 
         </div>

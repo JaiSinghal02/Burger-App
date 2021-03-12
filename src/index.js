@@ -5,17 +5,22 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import axios from 'axios';
 import {BrowserRouter} from 'react-router-dom';
-
+import {Provider} from 'react-redux'
+import {createStore} from 'redux';
+import reducer from './store/reducers/reducer'
 axios.defaults.baseURL='https://burger-bing-react-app-default-rtdb.firebaseio.com';
 
-
+const store=createStore(reducer)
 
 ReactDOM.render(
+  <Provider store={store}>
   <BrowserRouter>
   <React.StrictMode>
+    
     <App />
   </React.StrictMode>
-  </BrowserRouter>,
+  </BrowserRouter>
+  </Provider>,
   document.getElementById('root')
 );
 

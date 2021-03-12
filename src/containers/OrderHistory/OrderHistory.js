@@ -3,17 +3,19 @@ import './OrderHistory.css'
 import PastOrder from '../../compnents/Order/PastOrder/PastOrder';
 import Spinner from '../../compnents/UI/Spinner/Spinner';
 import axios from 'axios';
+import {connect} from 'react-redux';
 
 class OrderHistory extends Component{
     constructor(props){
         super(props);
         this.state={
             orders: [],
-            spinner:true
+            spinner:true,
+            error: 'No orders to show'
         }
     }
     componentDidMount(){
-        axios.get('https://burger-bing-react-app-default-rtdb.firebaseio.com/orders.json')
+        axios.get('https://burger-bing-react-app-default-rtdb.firebaseio.com/orders.json?auth='+this.props.authId)
             .then(res=>{
                 let obj=[];
                 for(let eachobj in res.data){
@@ -25,8 +27,8 @@ class OrderHistory extends Component{
                 this.setState({orders:obj,spinner:false});
             })
             .catch(err=>{
-                this.setState({spinner:false});
-                console.log(err);
+                this.setState({spinner:false,error: err.response.statusText});
+                console.log(err.response);
             })
     }
     render(){
@@ -40,7 +42,7 @@ class OrderHistory extends Component{
             })
             Heading=<p style={{fontSize:"1.5rem",fontWeight:"bolder"}}>The Orders are:</p>
             if(Orders.length===0){
-                Orders=<p style={{fontSize:"1.5rem"}}>No Orders to show ...</p>
+                Orders=<p style={{fontSize:"1.5rem"}}>{this.state.error}</p>
                 Heading=null;
             }
             else if(Orders.length%3!==0){
@@ -60,4 +62,10 @@ class OrderHistory extends Component{
         )
     }
 };
-export default OrderHistory;
+
+const mapStateToProps= state=>{
+    return {
+        authId: state.authId
+    }
+}
+export default connect(mapStateToProps)(OrderHistory);

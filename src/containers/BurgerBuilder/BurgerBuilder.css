@@ -1,0 +1,18 @@
+.User-Log-Out-Msg{
+    animation: disappear 3s ease-in-out;
+    transform: translateX(60vw);
+    background-color: #aada35;
+    border-radius: 5px;
+    height: 30px;
+    width: 170px;
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+@keyframes disappear{
+    30%{
+        transform: translateX(calc(40vw + 50px));
+    }
+}

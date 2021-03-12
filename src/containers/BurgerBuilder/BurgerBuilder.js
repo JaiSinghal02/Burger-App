@@ -6,6 +6,8 @@ import './BurgerBuilder.css'
 import Modal from '../../compnents/UI/Modal/Modal';
 import OrderSummary from '../../compnents/OrderSummary/OrderSummary';
 import Spinner from '../../compnents/UI/Spinner/Spinner';
+import {connect} from 'react-redux';
+
 class BurgerBuilder extends Component {
     constructor(props) {
         super(props);
@@ -16,7 +18,8 @@ class BurgerBuilder extends Component {
             price: 10,
             shouldOrder: false,
             isPurchasing:false,
-            spinner:false
+            spinner:false,
+            msgStyle:'flex' //to show LogOut MESSAGE 
         }
     };
     updateShouldOrder(ing) {
@@ -92,11 +95,19 @@ class BurgerBuilder extends Component {
             orderBurger={this.orderBurger.bind(this)}
             />
         }
+        const changeStyle=()=>{
+            this.setState({msgStyle: 'none'})
+        }
+        let logOut=null;
+        if(this.props.loggedOut){
+        logOut=<p className="User-Log-Out-Msg" onAnimationEnd={changeStyle} style={{display:this.state.msgStyle}}>Log Out Success</p>}
+        
         return (
             <Aux className="Container">
                 <Modal showModal={this.state.isPurchasing}>
                     {modalContent}
                 </Modal>
+                {logOut}
                 <Burger val={[...this.state.ingredient]}></Burger>
 
                 <BuildControls
@@ -113,4 +124,10 @@ class BurgerBuilder extends Component {
         );
     }
 };
-export default BurgerBuilder;
+
+const mapStateToProps=state=>{
+    return{
+        loggedOut : state.logOut
+    }
+}
+export default connect(mapStateToProps)(BurgerBuilder);
