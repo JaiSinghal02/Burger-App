@@ -1,6 +1,8 @@
 import React , { Component } from 'react';
 import Spinner from '../../compnents/UI/Spinner/Spinner'
 import BackDrop from '../../compnents/UI/Backdrop/BackDrop'
+import openEye from '../../assets/images/open-eye.png'
+import closedEye from '../../assets/images/closed-eye.png'
 import axios from 'axios'
 import {connect} from 'react-redux';
 import * as actionTypes from '../../store/actions/action'
@@ -15,7 +17,8 @@ class Auth extends Component{
             showSpinner:false,
             showError:false,
             errorMessage:'',
-            successMessage:''
+            successMessage:'',
+            passwordType: 'password'
         }
     }
     redirect(){
@@ -72,6 +75,11 @@ class Auth extends Component{
         oldState['showError']=false;
         this.setState(oldState);
     }
+    togglePassword(){
+        let oldval=this.state.passwordType;
+        let newval=(oldval==='password')?'text':'password';
+        this.setState({passwordType:newval});
+    }
     render(){
         let errorBox=this.state.showError?<div className="Auth-Error">{this.state.errorMessage}</div>:null;
         let content=
@@ -91,7 +99,17 @@ class Auth extends Component{
                 <h4>{this.state.isSignUp?"Sign Up Form":"Sign In Form"}</h4>
                 <form className="Auth-Form" onSubmit={(e)=>this.submitForm(e)}>
                     <input type="email" placeholder="Email Address" onChange={(e)=> this.inputForm(e,"email")} required autoFocus></input>
-                    <input type="password" placeholder="Password" onChange={(e)=> this.inputForm(e,"password")} required minLength="6"></input>
+                    <div className="Password-Block">
+                    <input type={this.state.passwordType} placeholder="Password" onChange={(e)=> this.inputForm(e,"password")} required minLength="6"></input>
+                    <div className="Toggle-Password-Img">
+
+                        <img src={this.state.passwordType==='password'?closedEye:openEye} 
+                        alt="Password-Toggler"  
+                        onClick={this.togglePassword.bind(this)}
+                        title={this.state.passwordType==='password'?"View-Password":"Hide-Password"}>
+                        </img>
+                    </div>
+                    </div>
                     <button className="Auth-Form-Submit-Btn">{this.state.isSignUp?"Sign Up":"Sign in"}</button>
                 </form>
             </div>

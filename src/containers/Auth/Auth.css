@@ -33,9 +33,28 @@
 }
 .Auth-Form input{
     width:60%;
+    padding:4px;
+    border: 1.6px solid black;
+}
+.Auth-Form input:focus{
+    background-color: rgb(247, 241, 241);
+}
+.Auth-Form button{
+    font-size:16px;
+}
+.Auth-Form button:hover{
+    cursor:pointer;
 }
 .Auth-Form-Switch-Btn{
     margin-top: 35px;
+    padding:5px;
+    outline: none;
+    border:none;
+    
+}
+.Auth-Form-Switch-Btn:hover{
+    cursor: pointer;
+    transform: scale(1.2);
     
 }
 
@@ -72,6 +91,38 @@
         transform: translateY(0);
     }
 }
+.Password-Block{
+    display: flex;
+    width:calc(62% + 2px);
+}
+.Toggle-Password-Img{
+    width: 22px;
+    height: 25px;
+    background-color: rgb(255, 255, 255);
+    border: 1.6px solid black;
+    border-left: none;
+}
+.Toggle-Password-Img:hover{
+    cursor: pointer;
+}
+
+.Toggle-Password-Img img{
+    width:100%;
+    height: 100%;
+}
+
+.Password-Block input{
+    width:95%;
+    border-right: none;
+    outline: none;
+}
+.Password-Block input:focus{
+    outline: none;
+    border:2px solid black;
+    border-right: none;
+    background-color: rgb(247, 241, 241);
+}
+
 
 @media only screen and (max-width:620px){
     .Auth-Form-Div{
@@ -79,5 +130,11 @@
     }
     .Auth-Form input{
         width:75%;
+    }
+    .Password-Block{
+        width:79%;
+    }
+    .Password-Block input{
+        width:100%
     }
 }
