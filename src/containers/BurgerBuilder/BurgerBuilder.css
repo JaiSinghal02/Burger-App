@@ -1,10 +1,10 @@
 .User-Log-Out-Msg{
-    animation: disappear 3s ease-in-out;
-    transform: translateX(60vw);
+    animation: disappear 3.5s ease-in-out;
+    transform: translateX(69vw);
     background-color: #aada35;
     border-radius: 5px;
     height: 30px;
-    width: 170px;
+    width: 190px;
     position: fixed;
     align-items: center;
     justify-content: center;
@@ -13,6 +13,19 @@
 
 @keyframes disappear{
     30%{
-        transform: translateX(calc(40vw + 50px));
+        transform: translateX(40vw);
+    }
+}
+
+@media only screen and (max-width:700px){
+    .User-Log-Out-Msg{
+        transform: translateY(-20vh);
+        z-index: 200;
+        
+    }
+    @keyframes disappear{
+        30%{
+            transform: translateY(-5vh);
+        }
     }
 }

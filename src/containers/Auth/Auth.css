@@ -33,7 +33,7 @@
 }
 .Auth-Form input{
     width:60%;
-    padding:4px;
+    padding:6px;
     border: 1.6px solid black;
 }
 .Auth-Form input:focus{
@@ -47,7 +47,7 @@
 }
 .Auth-Form-Switch-Btn{
     margin-top: 35px;
-    padding:5px;
+    padding:7px;
     outline: none;
     border:none;
     
@@ -96,8 +96,8 @@
     width:calc(62% + 2px);
 }
 .Toggle-Password-Img{
-    width: 22px;
-    height: 25px;
+    width: 24px;
+    height: 28px;
     background-color: rgb(255, 255, 255);
     border: 1.6px solid black;
     border-left: none;

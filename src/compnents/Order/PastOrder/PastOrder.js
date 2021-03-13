@@ -21,7 +21,7 @@ class PastOrder extends Component {
                     card1: false,
                     card2: true,
                     card1Class: "Past-Order-Page Hide",
-                    card2Class: "Past-Order-Page Flip-Card-Show Show"
+                    card2Class: "Past-Order-Page-User Flip-Card-Show Show"
                 }
             )
         }
@@ -39,18 +39,30 @@ class PastOrder extends Component {
 
     render() {
         let elements = [];
+        let keygen = 0;
         if (this.state.card1) {
             for (let e in this.props.order) {
-                if (+this.props.order[e] < 5) { elements.push(<li><span className="Bullet-Points">{e}: </span>{+this.props.order[e]}</li>) }
+                if (+this.props.order[e] < 5) {
+                    elements.push(<li key={keygen}><span className="Bullet-Points">{e}: </span>{+this.props.order[e]}</li>)
+                    keygen += 1;
+                }
             }
 
         }
         else {
             let st = null;
+            let infoTag;
             for (let e in this.props.order.Customer) {
-                if (e === "phone_number") st = { width: "24%" };
+                if (e === "phone_number") st = { width: "75%" };
                 else st = null;
-                elements.push(<li style={st}><span className="Bullet-Points">{e.split("_").join(" ")}: </span>{+this.props.order.Customer[e]}</li>)
+                infoTag=e;
+                if(infoTag !== "address"){
+                    elements.push(<li key={keygen} style={st}><span className="Bullet-Points">{infoTag.split("_").join(" ")}:  </span>{this.props.order.Customer[e]}</li>)
+                }
+                else{
+                    elements.push(<li key={keygen} style={st}><span className="Bullet-Points">{infoTag.split("_").join(" ")}:  </span>{this.props.order.Customer[e]["street"]}</li>)
+                }
+                keygen += 1;
             }
         }
         let cardDisp1, cardDisp2;

@@ -15,7 +15,9 @@ class OrderHistory extends Component{
         }
     }
     componentDidMount(){
-        axios.get('https://burger-bing-react-app-default-rtdb.firebaseio.com/orders.json?auth='+this.props.authId)
+        window.scrollTo(0,0);
+        const queryP='?auth='+this.props.authId+'&orderBy="userId"&equalTo="'+this.props.userId+'"';
+        axios.get('https://burger-bing-react-app-default-rtdb.firebaseio.com/orders.json'+queryP)
             .then(res=>{
                 let obj=[];
                 for(let eachobj in res.data){
@@ -28,7 +30,6 @@ class OrderHistory extends Component{
             })
             .catch(err=>{
                 this.setState({spinner:false,error: err.response.statusText});
-                console.log(err.response);
             })
     }
     render(){
@@ -47,7 +48,6 @@ class OrderHistory extends Component{
             }
             else if(Orders.length%3!==0){
                 let wid=(Orders.length%3)===1?'59%':'26%';
-                console.log(typeof wid)
                 ExtraCard=<p style={{fontSize:"1rem",width:String(wid),display:'flex',justifyContent:'center',alignItems:'center'}}>Make more orders...</p>
             }
         }
@@ -65,7 +65,8 @@ class OrderHistory extends Component{
 
 const mapStateToProps= state=>{
     return {
-        authId: state.authId
+        authId: state.authId,
+        userId: state.userId
     }
 }
 export default connect(mapStateToProps)(OrderHistory);

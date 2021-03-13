@@ -32,7 +32,7 @@ const BuildControls = (props) => (
                 <div className="Price">
                     Total price: Rs{props.price}
                 </div>
-                <button className="Check-Out" disabled={!props.checkOrd} onClick={props.ordered}>Check out</button>
+                <button className="Check-Out" disabled={!props.checkOrd} onClick={props.ordered}>{props.isAuth?'Check out':'Sign-in/Sign-up'}</button>
             </div>
             <div className="Reset-Button-Div"><button className="Reset-Button" disabled={!props.checkOrd} onClick={props.reset}>Reset</button></div>
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ContactForm from '../../compnents/Order/ContactForm/ContactForm';
 import Spinner from '../../compnents/UI/Spinner/Spinner';
 import Modal from '../../compnents/UI/Modal/Modal';
+import BackDrop from '../../compnents/UI/Backdrop/BackDrop'
 import axios from 'axios'
 
 class UserContact extends Component {
@@ -19,12 +20,14 @@ class UserContact extends Component {
             spinner: false,
             validateClass:['','','','',''],
             mouseEntered: false,
-            exit:false
+            exit:false,
+            error:'',
+            errorStyle: 'none'
 
         }
     }
     validateInfo(){
-        console.log("Mouse")
+        //console.log("Mouse")
         let check=true,c=[]
         c.push((this.state.name.trim().length>=5 && this.state.name.trim().length<=25));
         c.push((+this.state.age)<=100 && (+this.state.age)>6);
@@ -46,7 +49,6 @@ class UserContact extends Component {
 
     }
     order(e) {
-        console.log("reading..",this.props)
         e.preventDefault();
         if(this.validateInfo()){
             
@@ -66,20 +68,19 @@ class UserContact extends Component {
                     street: this.state.address.street,
                     pincode: this.state.address.pincode
                 }
-            }
+            },
+            userId: this.props.userId
         }
-        axios.post('/orders.json', order)
+        axios.post('/orders.json?auth='+this.props.authId, order)
             .then(res => {
-                this.setState({ spinner: false,exit:true });
-                console.log(res);
+                this.setState({ spinner: false,exit:true,error:'' });
                 setTimeout(()=>{
                     this.props.history.push('/')
                 },1500)
                 
             })
             .catch(err => {
-                this.setState({ spinner: false });
-                console.log(err);
+                this.setState({ spinner: false,error: err.response.data.error,errorStyle: 'block'}); 
             })
         }
         
@@ -96,6 +97,7 @@ class UserContact extends Component {
             newAdd[x]=event.target.value;
             this.setState({address:newAdd})
         }
+        this.setState({errorStyle: 'none'})
         if(this.state.mouseEntered) this.validateInfo();
     }
     render() {
@@ -106,7 +108,11 @@ class UserContact extends Component {
         validateInfo={this.validateInfo.bind(this)}
         />;
         if (this.state.spinner) {
-            form = <Modal showModal="true"><Spinner/></Modal>
+            form = 
+            <>
+            <BackDrop showBack="true"></BackDrop>
+            <Spinner/>
+            </>
         }
         else if (this.state.exit){
             form=<Modal showModal="true">
@@ -121,8 +127,13 @@ class UserContact extends Component {
                     </div>
                 </Modal>
         }
+        let error=null;
+        if(this.state.error!==''){
+            error=<p style={{display: this.state.errorStyle}}>{this.state.error}</p>
+        }
         return (
-            <>
+            <>  
+                {error}
                 {form}
             </>
         )

@@ -1,6 +1,9 @@
 .Past-Order-Page{
     width:30%;
 }
+.Past-Order-Page-User{
+    width:500px;
+}
 
 
 .Past-Order{
@@ -13,6 +16,11 @@
     box-shadow: 3px 4px 7px #4c6239;
     margin-bottom: 8px;
     height:90%;
+}
+.Past-Order-Page-User .Past-Order-Details li{
+    display:flex;
+    flex-wrap: wrap;
+    padding-bottom:5px;
 }
 .Past-Order-Pin{
     position: relative;
@@ -135,8 +143,6 @@
 }
 @media only screen and (max-width:570px){
     .Past-Order-Page{
-        margin-top: 10px;
-        margin-left: 10%;
         width:80%;
         display: flex;
         flex-direction: column;
@@ -144,6 +150,24 @@
         color: #083750;
         box-shadow: 3px 4px 7px #4c6239;
         margin-bottom: 8px;
+    }
+    .Past-Order-Pin {
+        width: 15px;
+        height: 15px;
+    }
+    .Past-Order-Page-User{
+        width:80%;
+    }
+    .Past-Order-Page-User .Past-Order-Details{
+        width:70%;
+        font-size: calc(1.1vw + 10px);
+    }
+    .Past-Order-Page-User .Past-Order-Details li{
+        display:flex;
+        flex-wrap: wrap;
+    }
+    .Past-Order-Customer{
+        width:0;
     }
     .Flip-Card-Show{
         animation: flipShow 1s ease-in;

@@ -5,7 +5,7 @@ import * as actionTypes from '../../../store/actions/action'
 import { connect } from 'react-redux';
 
 const navigationItems = (props)=>{
-    let navItem=<NavigationItem  className="Nav-Auth"link="/auth" >Authenticate</NavigationItem>
+    let navItem=<NavigationItem  className="Nav-Auth"link="/auth" >Log In</NavigationItem>
     if(props.authId){
         navItem=
         <>

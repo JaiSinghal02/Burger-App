@@ -2,7 +2,10 @@ import * as actionTypes from '../actions/action'
 
 const initState={
     authId: null,
-    logOut:false
+    userId: null,
+    logOut:false,
+    isBurgerBuilt:false,
+    ingredients: []
 }
 
 const reducer=(state=initState,action)=>{
@@ -11,19 +14,35 @@ const reducer=(state=initState,action)=>{
             return {
                 ...state,
                 authId: action.authId,
+                userId: action.userId,
                 logOut:false
             }
         case actionTypes.USER_LOGOUT:
+            localStorage.removeItem('authId');
             return {
                 ...state,
                 authId: null,
-                logOut:true
+                userId: null,
+                logOut:true,
+                isBurgerBuilt: false,
+                ingredients: []
             }
-        
+        case actionTypes.IS_BURGER_BUILT:
+            return{
+                ...state,
+                isBurgerBuilt:true,
+                ingredients: state.ingredients.concat(action.ing)
+            }
+        case actionTypes.SET_LOGOUT_FALSE:
+            return{
+                ...state,
+                logOut:false
+            }
 
         default:
             return state
     }
 };
+
 
 export default reducer;

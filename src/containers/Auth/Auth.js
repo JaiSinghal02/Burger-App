@@ -4,6 +4,7 @@ import BackDrop from '../../compnents/UI/Backdrop/BackDrop'
 import openEye from '../../assets/images/open-eye.png'
 import closedEye from '../../assets/images/closed-eye.png'
 import axios from 'axios'
+import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import * as actionTypes from '../../store/actions/action'
 import './Auth.css'
@@ -21,10 +22,21 @@ class Auth extends Component{
             passwordType: 'password'
         }
     }
+    componentDidMount(){
+        window.scrollTo(0,0);
+    }
+    saveDataToLocalStorage(authId,userId){
+        localStorage.setItem('authId',authId)
+        localStorage.setItem('userId',userId)
+    }
     redirect(){
+        let url='/check-out'
+        if(!this.props.isBurgerBuilt){
+            url='/'
+        }
         setTimeout(()=>{
-            this.props.history.push('/')
-        },1600)
+            this.props.history.push(url)
+        },2000)
     }
     submitForm(e){
         e.preventDefault();
@@ -40,31 +52,30 @@ class Auth extends Component{
         if(this.state.isSignUp){
             axios.post(signUpUrl,user)
                 .then(res=>{
-                    console.log(res);
                     this.setState({showSpinner:false,successMessage:"Sign Up Successful"})
-                    this.props.onAuth(res.data.idToken)
+                    this.props.onAuth(res.data.idToken,res.data.localId)
+                    this.saveDataToLocalStorage(res.data.idToken,res.data.localId);
                     this.redirect();
                 })
                 .catch(err=>{
                     this.setState({showError:true,errorMessage:err.response.data.error.message.split("_").join(" "),showSpinner:false});
-                    console.log(err.message,"\n",user);
+                    
                     
                 })
         }
         else{
             axios.post(singInUrl,user)
                 .then(res=>{
-                    console.log(res)
                     this.setState({showSpinner:false,successMessage:"Sign in Successful"})
-                    this.props.onAuth(res.data.idToken)
+                    this.props.onAuth(res.data.idToken,res.data.localId);
+                    this.saveDataToLocalStorage(res.data.idToken,res.data.localId);
                     this.redirect();
                 })
                 .catch((err)=>{
                     this.setState({showError:true,errorMessage:err.response.data.error.message.split("_").join(" "),showSpinner:false});
-                    console.log("err code=",err.response.data)
+                    
                 })
         }
-        console.log("Form Submitted")
     }
     switchAuthMode(){
         this.setState({isSignUp: !this.state.isSignUp})
@@ -80,6 +91,8 @@ class Auth extends Component{
         let newval=(oldval==='password')?'text':'password';
         this.setState({passwordType:newval});
     }
+    
+
     render(){
         let errorBox=this.state.showError?<div className="Auth-Error">{this.state.errorMessage}</div>:null;
         let content=
@@ -116,18 +129,33 @@ class Auth extends Component{
             <button className="Auth-Form-Switch-Btn" onClick={this.switchAuthMode.bind(this)}>{this.state.isSignUp?"Old User? Login Here":"New User? Sign-up Here"}</button>
         </div>
         }
+
+        let moveToPage=null;
+        if(this.props.isAuth && !this.props.isBurgerBuilt){
+            moveToPage=<Redirect to='/'/>
+        }
+        else if(this.props.isAuth && this.props.isBurgerBuilt){
+            moveToPage=<Redirect to='/check-out'/>
+        }
         return(
             <>
+            {moveToPage}
             {errorBox}
             {content}
             </>
         )
     }
 }
-
-const mapDispatchToProps=dispatch=>{
-    return {
-        onAuth: (authId)=> dispatch({type: actionTypes.SET_AUTH_ID, authId: authId})
+const mapStateToProps = state=>{
+    return{
+        isBurgerBuilt: state.isBurgerBuilt,
+        burgerIngredients: state.ingredients,
+        isAuth: state.authId !==null
     }
 }
-export default connect(null,mapDispatchToProps)(Auth);
+const mapDispatchToProps=dispatch=>{
+    return {
+        onAuth: (authId,userId)=> dispatch({type: actionTypes.SET_AUTH_ID, authId: authId,userId: userId})
+    }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(Auth);

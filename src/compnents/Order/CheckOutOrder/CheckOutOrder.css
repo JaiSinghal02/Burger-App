@@ -57,8 +57,11 @@
 
 @media only screen and (max-width: 600px) {
     .Check-Out-Burger{
-        width:350px;
-        margin:auto;
+        width: 100%;
+    align-items: center;
+    display: flex;
+    margin: auto;
+    justify-content: center;
     }
 }
 @media only screen and (max-width:350px){
