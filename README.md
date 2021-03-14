@@ -1,5 +1,7 @@
 Hosted Website: https://burger-bing.herokuapp.com/
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a pure React App which uses Google Firebase as a Backend and Database.
+Do Visit the Website and Enjoy Ordering Your delicious Burger.
+
 
 
