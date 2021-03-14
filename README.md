@@ -1,4 +1,4 @@
-<h3 style="color:green">Hosted Website</h3>: https://burger-bing.herokuapp.com/
+<h3>Hosted Website: <h4>https://burger-bing.herokuapp.com/</h4></h3>
 
 This is a pure React App which uses Google Firebase as a Backend and Database.
 <br>
